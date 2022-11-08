@@ -3,13 +3,13 @@ var timerEl = document.getElementById("time");
 var startEl = document.getElementById("btn-start");
 var score = 75;
 var questionCounter = 0;
-
+var timeLeft = 3;
 // Show questions on page
 var quizBox = document.getElementById("questions");
 var endScreen = document.getElementById("end-screen");
 
 function countdown() {
-  var timeLeft = 30;
+
 
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
@@ -21,20 +21,27 @@ function countdown() {
     } else {
       timerEl.textContent = timeLeft + " seconds remaining";
       timeLeft = 0;
-
     }
+    
   }, 1000);
 }
+
+
 // hides start element
 function hideStart() {
   var wrapper = document.querySelector(".wrapper");
   wrapper.setAttribute("style", "display: none;");
 }
+// displays ending page
+function showEnd() {
+  var endScreen = document.getElementById("end-screen");
+  endScreen.classList.remove("hide2");
+}
 // starts when start quiz is pressed
 startEl.addEventListener("click", function () {
   hideStart();
   countdown();
-  getQuestion();
+  // getQuestion();
 });
 // timer deducts when wrong answer is selected
 
@@ -81,28 +88,28 @@ var myQuestions = [
   },
 ];
 
-// call one question
-function getQuestion() {
-// var currentQuestion = myQuestions(questionCounter);
+// // call one question
+// function getQuestion() {
+// // var currentQuestion = myQuestions(questionCounter);
 
-  for (var i = 0; i < myQuestions.length; i++) {
-    var counter = myQuestions[i];
-    var h2 = document.setAttribute("h2", title);
-    var button = document.setAttribute("button", choice);
-    li.textContent = choice;
-    li.setAttribute("data-index", i);
-  }
-  questionCounter++;
-}
+//   for (var i = 0; i < myQuestions.length; i++) {
+//     var counter = myQuestions[i];
+//     var h2 = document.setAttribute("h2", title);
+//     var button = document.setAttribute("button", choice);
+//     li.textContent = choice;
+//     li.setAttribute("data-index", i);
+//   }
+//   questionCounter++;
+// }
 
-//call next question & Check answer
- choice.addEventListener("click", function(){
-  if (myQuestions.choice === myQuestion.correctAnswer) {
-    getQuestion();
-    } else {
-      getQuestion();
-      timeLeft-5;
-  }
-})
+// //call next question & Check answer
+//  choice.addEventListener("click", function(){
+//   if (myQuestions.choice === myQuestion.correctAnswer) {
+//     getQuestion();
+//     } else {
+//       getQuestion();
+//       timeLeft-5;
+//   }
+// })
 
 // hide question
